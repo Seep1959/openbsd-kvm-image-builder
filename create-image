@@ -190,8 +190,9 @@ copy_iso() {
 }
 
 start_blank() {
-  echo "==> Starting ${VM_UUID} with cdrom=/$ISO:"
-  pfexec vmadm start ${VM_UUID} order=cd,once=d cdrom=/$ISO,ide
+  BASE_ISO=$(basename $ISO)
+  echo "==> Starting ${VM_UUID} with cdrom=/$BASE_ISO:"
+  pfexec vmadm start ${VM_UUID} order=cd,once=d cdrom=/$BASE_ISO,ide
   echo "==>"
 }
 
